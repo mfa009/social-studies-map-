@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المواقع الأثرية في سلطنة عمان</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    background: #f2f2f2;
+}
+
+header {
+    background: #004d40;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.map {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    padding: 20px;
+}
+
+.info {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    background: white;
+}
+
+svg path {
+    fill: #80cbc4;
+    stroke: white;
+    stroke-width: 2;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+svg path:hover {
+    fill: #00796b;
+}
+
+h2 {
+    color: #004d40;
+}
+
+ul {
+    line-height: 1.8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>أبرز المواقع الأثرية في محافظات سلطنة عمان</h1>
+</header>
+
+<div class="container">
+
+<div class="map">
+
+<!-- خريطة مبسطة تعليمية -->
+<svg width="350" height="500" viewBox="0 0 350 500">
+
+<!-- مسندم -->
+<path d="M150 20 L200 20 L190 70 L140 70 Z"
+onclick="showInfo('musandam')" />
+
+<!-- شمال الباطنة -->
+<path d="M120 100 L200 100 L190 150 L110 150 Z"
+onclick="showInfo('batinah')" />
+
+<!-- الداخلية -->
+<path d="M100 200 L220 200 L200 300 L80 300 Z"
+onclick="showInfo('dakhiliyah')" />
+
+<!-- الشرقية -->
+<path d="M220 200 L320 220 L300 350 L200 300 Z"
+onclick="showInfo('sharqiyah')" />
+
+<!-- ظفار -->
+<path d="M40 350 L200 350 L180 480 L20 480 Z"
+onclick="showInfo('dhofar')" />
+
+</svg>
+
+<p>اضغط على المحافظة لعرض أهم مواقعها الأثرية</p>
+
+</div>
+
+<div class="info" id="infoBox">
+    <h2>اختر محافظة</h2>
+    <p>اضغط على أي محافظة في الخريطة لعرض المواقع.</p>
+</div>
+
+</div>
+
+<script>
+
+const locations = {
+
+musandam: {
+    name: "محافظة مسندم",
+    sites: [
+        "خور نجد",
+        "خصب",
+        "جزيرة سلامة وبناتها"
+    ]
+},
+
+batinah: {
+    name: "محافظة شمال الباطنة",
+    sites: [
+        "حصن الحزم",
+        "قلعة صحار",
+        "موقع وادي الجزي"
+    ]
+},
+
+dakhiliyah: {
+    name: "محافظة الداخلية",
+    sites: [
+        "قلعة نزوى",
+        "بهلاء",
+        "الجبل الأخضر"
+    ]
+},
+
+sharqiyah: {
+    name: "محافظة الشرقية",
+    sites: [
+        "رمال وهيبة",
+        "وادي بني خالد",
+        "رأس الحد"
+    ]
+},
+
+dhofar: {
+    name: "محافظة ظفار",
+    sites: [
+        "مدينة سمهرم",
+        "شجرة اللبان",
+        "خور روري"
+    ]
+}
+
+};
+
+function showInfo(region) {
+    const info = locations[region];
+
+    let content = `<h2>${info.name}</h2><ul>`;
+
+    info.sites.forEach(site => {
+        content += `<li>${site}</li>`;
+    });
+
+    content += "</ul>";
+
+    document.getElementById("infoBox").innerHTML = content;
+}
+
+</script>
+
+</body>
+</html>
